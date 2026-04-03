@@ -17,6 +17,9 @@ export const metadata = {
   },
   category: "finance",
   applicationName: "Swapam",
+  other: {
+    "facebook-domain-verification": "vbv28a4scqi519abnk99nl9yopckwn",
+  },
 };
 
 interface RootLayoutProps {
