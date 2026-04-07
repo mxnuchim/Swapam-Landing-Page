@@ -10,14 +10,14 @@
 
 ::-webkit-scrollbar {
   width: 4px;
-  background-color: #363753;
+  background-color: #ffffff;
   border-radius: 8px;
   scrollbar-width: thin;
 }
 
 ::-webkit-scrollbar-thumb {
   color: #363753;
-  background-color: #52a8a6;
+  background-color: #ffffff;
   border-radius: 8px;
 }
 
@@ -33,18 +33,15 @@
   }
 }
 
-html {
+html,
+body {
+  background: #ffffff;
+  overscroll-behavior: none;
   scroll-behavior: smooth;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
 
 @layer utilities {

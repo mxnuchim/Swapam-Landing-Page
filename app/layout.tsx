@@ -1,7 +1,7 @@
-import { Quicksand } from "next/font/google";
+import { Urbanist } from "next/font/google";
 import "./globals.css";
 
-const quicksand = Quicksand({ subsets: ["latin"] });
+const primaryFont = Urbanist({ weight: "400", subsets: ["latin"] });
 
 export const metadata = {
   metadataBase: new URL("https://swapamnow.com"),
@@ -28,7 +28,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body className={quicksand.className}>{children}</body>
+      <body className={primaryFont.className}>{children}</body>
     </html>
   );
 }

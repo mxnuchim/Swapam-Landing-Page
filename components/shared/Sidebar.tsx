@@ -1,54 +1,116 @@
-import React from "react";
+"use client";
+
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { HiOutlineBars3BottomRight } from "react-icons/hi2";
-import { IoMdClose } from "react-icons/io";
-
-interface LinkItem {
-  text: string;
-  href: string;
-}
 
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  links: LinkItem[];
+  links: { href: string; text: string }[];
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, links }) => {
-  const router = useRouter();
-  return (
-    <div
-      className={`fixed lg:hidden top-0 right-0 w-full h-full bg-black bg-opacity-50 z-50 transition-transform transform ${
-        isOpen ? "translate-x-0" : "translate-x-full"
-      }`}
-      onClick={onClose}
-    >
-      <div
-        className="bg-white w-80 h-full px-6 py-8 shadow-lg fixed right-0"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex justify-end items-end" onClick={onClose}>
-          <IoMdClose size={25} className="text-darkBlue" />
-        </div>
-        <div className="flex flex-col space-y-8 mt-[30%]">
-          {links.map((link, index) => (
-            <Link
-              key={index}
-              href={link.href}
-              className="text-darkBlue hover:text-accent text-lg"
-              onClick={() => onClose()}
-            >
-              {link.text}
-            </Link>
-          ))}
-        </div>
-
-        <div className="w-full max-w-[60%] mt-10 flex flex-col space-y-4"></div>
-      </div>
-    </div>
-  );
+const backdrop = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
 };
 
-export default Sidebar;
+const panel = {
+  hidden: { x: "100%" },
+  visible: {
+    x: "0%",
+    transition: {
+      type: "spring",
+      stiffness: 260,
+      damping: 28,
+    },
+  },
+  exit: {
+    x: "100%",
+    transition: {
+      duration: 0.25,
+      ease: [0.4, 0, 1, 1],
+    },
+  },
+};
+
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.06,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0 },
+};
+
+export default function Sidebar({ isOpen, onClose, links }: SidebarProps) {
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          {/* ─── Backdrop ─── */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            onClick={onClose}
+            className="fixed inset-0 z-[9999] bg-black/20 backdrop-blur-sm"
+          />
+
+          {/* ─── Panel ─── */}
+          <motion.div
+            variants={panel}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="fixed right-0 top-0 z-[9999] h-full w-[85%] max-w-sm"
+          >
+            {/* Glass container */}
+            <div className="h-full bg-white/90 backdrop-blur-xl border-l border-white/40 shadow-2xl flex flex-col">
+              {/* Header */}
+              <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+                <div className="flex items-center gap-2">
+                  <Image src="/icon.png" alt="" width={32} height={32} />
+                  <span className="font-semibold text-ink">Swapam</span>
+                </div>
+
+                <button
+                  onClick={onClose}
+                  className="h-9 w-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition"
+                >
+                  ✕
+                </button>
+              </div>
+
+              {/* Links */}
+              <motion.div
+                variants={container}
+                initial="hidden"
+                animate="visible"
+                className="flex flex-col px-6 py-6 gap-6"
+              >
+                {links.map((link) => (
+                  <motion.div key={link.href} variants={item}>
+                    <Link
+                      href={link.href}
+                      onClick={onClose}
+                      className="text-lg font-medium text-ink transition hover:text-brand"
+                    >
+                      {link.text}
+                    </Link>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+}

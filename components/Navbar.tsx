@@ -6,70 +6,57 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 import { IoMdClose } from "react-icons/io";
-import Sidebar from "./shared/Sidebar";
 
-const Navbar = () => {
+import GbpFlag from "./icons/GbpFlag";
+
+interface NavbarProps {
+  onOpenSidebar: () => void;
+}
+
+const Navbar = ({ onOpenSidebar }: NavbarProps) => {
   const router = useRouter();
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!isMobileMenuOpen);
-  };
   return (
-    <nav className="bg-darkBlue border-b-[0.5px] border-b-gray-500 flex flex-row items-center justify-between py-4 px-4 lg:py-4 lg:px-10">
-      <div className="flex flex-row items-center justify-between border-white">
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-6xl">
+      <div
+        className="flex items-center justify-between px-6 py-3 rounded-2xl 
+        backdrop-blur-xl bg-white/70 border border-white/40 shadow-sm"
+      >
+        {/* Logo */}
         <div
-          className="flex items-center space-x-1 cursor-pointer"
           onClick={() => router.push("/")}
+          className="flex items-center gap-2 cursor-pointer"
         >
-          <Image
-            src="/logo.png"
-            alt="Swapam Logo"
-            width={300}
-            height={300}
-            className={`object-contain h-12 w-12 md:w-16 md:h-16`}
-          />
-          <Image
-            src="/swapam.svg"
-            alt="Swapam Logo"
-            width={300}
-            height={300}
-            className={`hidden lg:block object-contain h-10 w-20 `}
-          />
+          <Image src="/icon.png" alt="" width={36} height={36} />
+          <span className="font-semibold text-ink tracking-tight">Swapam</span>
         </div>
-        <div className="hidden lg:flex flex-row items-center justify-between border-l border-white gap-7 p-2 ml-4">
-          {navLinks.map((link, index) => (
-            <Link key={index} href={link.href}>
-              <p className="text-white ml-4 text-sm text-center hover:text-accent transition duration-300 ease-in-out">
+
+        {/* Links */}
+        <div className="hidden lg:flex items-center gap-8 text-sm text-subtext">
+          {navLinks.map((link) => (
+            <Link key={link.href} href={link.href} className="relative group">
+              <span className="transition-colors group-hover:text-ink">
                 {link.text}
-              </p>
+              </span>
+
+              {/* subtle underline animation */}
+              <span className="absolute left-0 -bottom-1 h-[1.5px] w-0 bg-brand transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
         </div>
+
+        {/* Right spacer (replaces CTA for balance) */}
+        <div className="hidden lg:block w-[72px]" />
+        <button className="hidden lg:flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-3 py-1.5 text-xs font-medium text-ink transition hover:border-brand/30 hover:bg-brand-soft">
+          <GbpFlag className="w-4 h-4" />
+          <span>EN</span>
+        </button>
+
+        {/* Mobile Menu Button */}
+        <button className="lg:hidden text-ink" onClick={() => onOpenSidebar()}>
+          <HiOutlineBars3BottomRight size={24} />
+        </button>
       </div>
-
-      <div className="hidden lg:flex border border-white rounded-full px-5 py-1">
-        <span className="text-sm">Get App</span>
-      </div>
-
-      {/* Mobile Hamburger Menu */}
-      <button
-        className="lg:hidden text-white focus:outline-none transition duration-300 ease-in-out"
-        onClick={toggleMobileMenu}
-      >
-        {isMobileMenuOpen ? (
-          <IoMdClose size={25} />
-        ) : (
-          <HiOutlineBars3BottomRight size={25} />
-        )}
-      </button>
-
-      {/* Mobile Navigation Links */}
-      <Sidebar
-        isOpen={isMobileMenuOpen}
-        onClose={() => setMobileMenuOpen(false)}
-        links={navLinks}
-      />
     </nav>
   );
 };

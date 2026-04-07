@@ -9,18 +9,24 @@ import Hero from "@/components/Hero";
 import JoinUs from "@/components/JoinUs";
 import Navbar from "@/components/Navbar";
 import Card from "@/components/shared/Card";
+import Sidebar from "@/components/shared/Sidebar";
+import AppQRDock from "@/components/shared/ui/QRDock";
+import { navLinks } from "@/data";
 import { handleAdRedirect } from "@/lib/redirect";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
   useEffect(() => {
     // Run the redirect logic when the component mounts
     handleAdRedirect();
   }, []);
 
   return (
-    <main className="">
-      <Navbar />
+    <main className="bg-red-500">
+      <Navbar onOpenSidebar={() => setSidebarOpen(true)} />
+
       <Hero />
       <FeaturesOne />
       <FeaturesTwo />
@@ -30,6 +36,13 @@ export default function Home() {
       <FAQ />
       <JoinUs />
       <Footer />
+      <AppQRDock />
+      {/* Mobile Sidebar */}
+      <Sidebar
+        isOpen={isSidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        links={navLinks}
+      />
     </main>
   );
 }

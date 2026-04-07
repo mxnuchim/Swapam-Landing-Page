@@ -36,7 +36,7 @@ const Footer = () => {
 
   return (
     <div id="footer" className="w-full">
-      <div className="bg-darkBlue flex flex-col lg:flex-row items-center px-6 md:px-[5%] lg:px-0 py-16 gap-7 ">
+      <div className="bg-brand flex flex-col lg:flex-row items-center px-6 md:px-[5%] lg:px-0 py-16 gap-7 ">
         <Container className="px-0 lg:px-[5%]">
           <div className="flex items-center space-x-1 -ml-2">
             <Image
@@ -78,7 +78,7 @@ const Footer = () => {
               <Button
                 title="App Store"
                 className={
-                  "bg-lightPurple w-full lg:w-auto flex items-center justify-center"
+                  "bg-brand-light w-full lg:w-auto flex items-center justify-center"
                 }
                 image={"/apple.png"}
               />
@@ -91,7 +91,7 @@ const Footer = () => {
                 title="Play Store"
                 image={"/playstore.png"}
                 className={
-                  "bg-lightPurple w-full lg:w-auto flex items-center justify-center"
+                  "bg-brand-light w-full lg:w-auto flex items-center justify-center"
                 }
               />
             </a>
@@ -162,7 +162,7 @@ const Footer = () => {
         </Container>
       </div>
 
-      <div className="w-full border-t-[0.5px] border-t-gray-500 px-[5%] py-4 bg-darkBlue">
+      <div className="w-full border-t-[0.5px] border-t-gray-500 px-[5%] py-4 bg-brand">
         <span className="text-left text-gray-300 text-xs md:text-sm font-normal">
           Swapam {new Date().getFullYear()}. All rights reserved
         </span>
