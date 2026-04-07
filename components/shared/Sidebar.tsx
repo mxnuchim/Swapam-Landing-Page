@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { CircleX, X } from "lucide-react";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -80,12 +81,11 @@ export default function Sidebar({ isOpen, onClose, links }: SidebarProps) {
                   <span className="font-semibold text-ink">Swapam</span>
                 </div>
 
-                <button
+                <X
                   onClick={onClose}
-                  className="h-9 w-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition"
-                >
-                  ✕
-                </button>
+                  className="hover:cursor-pointer hover:bg-gray-100 transition text-ink"
+                  size={16}
+                />
               </div>
 
               {/* Links */}
