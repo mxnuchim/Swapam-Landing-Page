@@ -56,7 +56,7 @@ const FeaturesOne = () => {
           <h3
             className={`text-sm md:text-lg ${
               item?.bg ? `text-white` : "text-black"
-            } text-left font-semibold`}
+            } text-left font-medium`}
           >
             {item.title}
           </h3>
@@ -78,7 +78,7 @@ const FeaturesOne = () => {
       className="bg-white min-h-screen flex flex-col px-[10%] justify-start lg:justify-center items-start lg:items-center py-10 lg:py-20  transition duration-300 ease-in-out"
     >
       <div className="w-full lg:w-[60%]">
-        <h2 className="text-left lg:text-center text-black py-16 text-xl md:text-3xl lg:text-4xl font-semibold">
+        <h2 className="text-left lg:text-center text-black py-16 text-xl md:text-3xl lg:text-4xl font-medium">
           Simplify Your Finances, Empower Your Lifestyle With Seamless Crypto
           Solutions!
         </h2>

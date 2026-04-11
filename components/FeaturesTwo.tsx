@@ -23,7 +23,7 @@ const FeaturesTwo = () => {
           }`}
         ></div>
         <div className="flex flex-col w-full md:w-[70%]">
-          <h2 className="text-left text-black text-lg md:text-xl font-semibold">
+          <h2 className="text-left text-black text-lg md:text-xl font-medium">
             {item?.title}
           </h2>
           <span className={`text-xs md:text-sm text-left text-lightGrayText`}>
@@ -48,7 +48,7 @@ const FeaturesTwo = () => {
       ></div>
       <Container className="py-10 px-[5%] lg:px-[10%]">
         <div className="w-[80%] md:w-[60%] lg:w-[40%] flex flex-col gap-3">
-          <h2 className="text-left text-black text-2xl md:text-3xl lg:text-3xl xl:text-3xl  font-semibold">
+          <h2 className="text-left text-black text-2xl md:text-3xl lg:text-3xl xl:text-3xl  font-medium">
             Your Journey to Instant Crypto Off-Ramping Begins Here!
           </h2>
           <span className={`text-sm md:text-base text-left text-lightGrayText`}>

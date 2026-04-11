@@ -36,7 +36,7 @@ const FeaturesThree = () => {
 
         <div className="flex flex-col items-center lg:items-start h-full w-full mt-10 lg:mt-0 gap-7 px-[10%]">
           <div className="w-full flex flex-col justify-center items-center lg:items-start gap-4 ">
-            <h3 className="text-lg md:text-xl lg:text-2xl xl:text-3xl text-center lg:text-left font-semibold text-black">
+            <h3 className="text-lg md:text-xl lg:text-2xl xl:text-3xl text-center lg:text-left font-medium text-black">
               {item.title}
             </h3>
             <span className="text-sm md:text-base xl:text-lg text-center lg:text-left text-lightGrayText">
@@ -66,7 +66,7 @@ const FeaturesThree = () => {
       ></div> */}
       <div className="pt-10 px-[5%] lg:px-[10%] mb-4 lg:mb-16">
         <Container className="w-full flex flex-col gap-3 ">
-          <h2 className="text-center lg:text-left text-black text-2xl md:text-3xl lg:text-4xl font-semibold">
+          <h2 className="text-center lg:text-left text-black text-2xl md:text-3xl lg:text-4xl font-medium">
             Endless Opportunities Await You on Swapam!
           </h2>
         </Container>

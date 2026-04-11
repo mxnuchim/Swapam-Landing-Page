@@ -1,7 +1,30 @@
 import { Urbanist } from "next/font/google";
+import localFont from "next/font/local";
+
 import "./globals.css";
 
-const primaryFont = Urbanist({ weight: "400", subsets: ["latin"] });
+// const primaryFont = Urbanist({ weight: "400", subsets: ["latin"] });
+
+const primaryFont = localFont({
+  src: [
+    {
+      path: "../public/fonts/aeonik/Aeonik-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/aeonik/Aeonik-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/aeonik/Aeonik-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-aeonik", // optional (useful for Tailwind)
+});
 
 export const metadata = {
   metadataBase: new URL("https://swapamnow.com"),

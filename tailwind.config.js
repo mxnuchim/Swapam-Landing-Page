@@ -25,7 +25,7 @@ module.exports = {
 
         // new
         brand: {
-          DEFAULT: "#6C5CE7", // slightly more premium purple
+          DEFAULT: "#614df9", // slightly more premium purple
           light: "#A29BFE",
           soft: "#F1EFFF", // background tint
           glow: "#8B7CFF",

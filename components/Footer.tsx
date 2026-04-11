@@ -103,7 +103,7 @@ const Footer = () => {
               className="w-full items-center justify-center"
               key={index}
             >
-              <span className="font-semibold text-sm md:text-base">
+              <span className="font-medium text-sm md:text-base">
                 {item.title}
               </span>
 
@@ -121,7 +121,7 @@ const Footer = () => {
           ))}
           {/** SOCIAL ICONS (DESKTOP ONLY) */}
           <Container className="w-full hidden lg:block">
-            <span className="font-semibold text-sm md:text-base">
+            <span className="font-medium text-sm md:text-base">
               {socialMediaFooterLinks.title}
             </span>
 
@@ -142,7 +142,7 @@ const Footer = () => {
         </div>
         {/** SOCIAL ICONS (MOBILE ONLY) */}
         <Container className="w-full flex flex-col items-center lg:hidden">
-          <span className="font-semibold text-sm md:text-base">
+          <span className="font-medium text-sm md:text-base">
             {socialMediaFooterLinks.title}
           </span>
 

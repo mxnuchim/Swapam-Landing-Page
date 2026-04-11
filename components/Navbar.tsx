@@ -28,7 +28,7 @@ const Navbar = ({ onOpenSidebar }: NavbarProps) => {
           className="flex items-center gap-2 cursor-pointer"
         >
           <Image src="/icon.png" alt="" width={36} height={36} />
-          <span className="font-semibold text-ink tracking-tight">Swapam</span>
+          <span className="font-medium text-ink tracking-tight">Swapam</span>
         </div>
 
         {/* Links */}
